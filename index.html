@@ -4,35 +4,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./style.css" />
+    <title>To-Do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif
+        }
+
+        #app {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9
+        }
+
+        h1 {
+            text-align: center
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer
+        }
+
+        button:hover {
+            background-color: #45a049
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0
+        }
+
+        li {
+            margin-bottom: 5px
+        }
+
+        .deleteBtn {
+            background-color: #f44336;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer
+        }
+
+        .deleteBtn:hover {
+            background-color: #d32f2f
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container">
-        <div id="test1">
-            <h1>Test1</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima voluptas eum optio qui. Nisi similique
-                molestias repellat debitis autem quibusdam fugit assumenda id! Tempore, nihil consequatur ratione
-                nesciunt
-                modi optio!</p>
-        </div>
-        <div id="test2">
-            <h1>Test2</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima voluptas eum optio qui. Nisi similique
-                molestias repellat debitis autem quibusdam fugit assumenda id! Tempore, nihil consequatur ratione
-                nesciunt
-                modi optio!</p>
-        </div>
+    <div id="app">
+        <h1>To-Do List</h1><input type="text" id="taskInput" placeholder="Add new task"><button id="addTaskBtn">Add
+            Task</button>
+        <ul id="taskList"></ul>
     </div>
-    <script src="https://code.jquery.com/jquery-3.7.1.js"
-        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <script>
-        $(document).ready(() => {
-            var a = $("#test1").html();
-            console.log("🚀 ~ $ ~ a:", a)
-        })
-    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>$(document).ready(function () { $('#addTaskBtn').click(function () { var e = $('#taskInput').val(); if ("" !== e) { $('#taskList').append('<li>' + e + ' <button class="deleteBtn">Delete</button></li>'); $('#taskInput').val('') } }); $(document).on('click', '.deleteBtn', function () { $(this).parent().remove() }); });</script>
 </body>
 
 </html>
